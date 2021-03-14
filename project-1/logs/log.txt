@@ -1,0 +1,91 @@
+asdf2021-03-06 00:24:13 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:24:13 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:24:13 ERROR EmployeeDAOImpl:69 - There was an error getting all the employees
+2021-03-06 00:25:08 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:25:08 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:25:08 INFO  EmployeeDAOImpl:56 - org.postgresql.jdbc.PgResultSet@71a8adcf
+2021-03-06 00:25:08 ERROR EmployeeDAOImpl:70 - There was an error getting all the employees
+2021-03-06 00:26:13 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:26:13 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:26:13 INFO  EmployeeDAOImpl:56 - org.postgresql.jdbc.PgResultSet@71a8adcf
+2021-03-06 00:26:13 ERROR EmployeeDAOImpl:70 - There was an error getting all the employees
+2021-03-06 00:26:42 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:26:42 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:26:42 ERROR EmployeeDAOImpl:70 - There was an error getting all the employees
+2021-03-06 00:29:06 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:29:06 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:29:06 ERROR EmployeeDAOImpl:70 - There was an error getting all the employees
+2021-03-06 00:29:26 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:29:26 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:29:26 ERROR EmployeeDAOImpl:70 - There was an error getting all the employees
+2021-03-06 00:31:16 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:31:16 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:33:00 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:33:00 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:33:00 INFO  EmployeeDAOImpl:56 - postgres
+2021-03-06 00:33:00 ERROR EmployeeDAOImpl:70 - There was an error getting all the employees
+2021-03-06 00:35:01 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:35:01 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:35:01 INFO  EmployeeDAOImpl:56 - postgres
+2021-03-06 00:35:01 ERROR EmployeeDAOImpl:70 - There was an error getting all the employees
+2021-03-06 00:35:10 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:35:10 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:35:55 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:35:55 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:35:55 INFO  EmployeeDAOImpl:57 - postgres
+2021-03-06 00:35:55 ERROR EmployeeDAOImpl:71 - There was an error getting all the employees
+2021-03-06 00:36:01 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:36:01 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:37:02 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:37:02 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:37:02 ERROR EmployeeDAOImpl:71 - There was an error getting all the employees
+2021-03-06 00:38:09 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:38:09 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:38:14 INFO  EmployeeDAOImpl:57 - postgres
+2021-03-06 00:38:53 ERROR EmployeeDAOImpl:71 - There was an error getting all the employees
+2021-03-06 00:39:40 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:39:40 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:44:34 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:44:34 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:44:42 ERROR EmployeeDAOImpl:71 - There was an error getting all the employees
+2021-03-06 00:46:11 INFO  ConnectionUtil:38 - Connection successful
+2021-03-06 00:46:11 INFO  ConnectionUtil:47 - Connected to db
+2021-03-06 00:46:11 ERROR EmployeeDAOImpl:73 - There was an error getting all the employees
+2021-03-06 00:47:13 INFO  ConnectionUtil:41 - connection successful
+2021-03-06 00:47:13 INFO  ConnectionUtil:51 - connected to db
+2021-03-06 00:47:13 ERROR EmployeeDAOImpl:73 - There was an error getting all the employees
+2021-03-08 21:55:02 INFO  ConnectionUtil:41 - connection successful
+2021-03-08 21:55:02 INFO  ConnectionUtil:51 - connected to db
+2021-03-08 21:55:02 INFO  EmployeeDAOImpl:84 - 1
+2021-03-08 21:55:09 INFO  ConnectionUtil:41 - connection successful
+2021-03-08 21:55:09 INFO  ConnectionUtil:51 - connected to db
+2021-03-08 21:55:09 INFO  EmployeeDAOImpl:84 - 1
+2021-03-08 21:55:09 INFO  ConnectionUtil:41 - connection successful
+2021-03-08 21:55:09 INFO  ConnectionUtil:51 - connected to db
+2021-03-08 21:55:09 INFO  EmployeeDAOImpl:84 - 2
+2021-03-08 21:55:10 INFO  ConnectionUtil:41 - connection successful
+2021-03-08 21:55:10 INFO  ConnectionUtil:51 - connected to db
+2021-03-13 00:09:26 INFO  ConnectionUtil:41 - connection successful
+2021-03-13 00:09:26 INFO  ConnectionUtil:51 - connected to db
+2021-03-13 00:09:26 INFO  EmployeeDAOImpl:112 - 1
+2021-03-13 00:09:26 INFO  ConnectionUtil:41 - connection successful
+2021-03-13 00:09:26 INFO  ConnectionUtil:51 - connected to db
+2021-03-13 00:09:26 INFO  EmployeeDAOImpl:112 - 2
+2021-03-13 00:09:27 INFO  ConnectionUtil:41 - connection successful
+2021-03-13 00:09:27 INFO  ConnectionUtil:51 - connected to db
+2021-03-13 00:09:27 INFO  ConnectionUtil:41 - connection successful
+2021-03-13 00:09:27 INFO  ConnectionUtil:51 - connected to db
+2021-03-13 00:09:27 INFO  EmployeeDAOImpl:112 - 1
+2021-03-13 00:09:28 INFO  ConnectionUtil:41 - connection successful
+2021-03-13 00:09:28 INFO  ConnectionUtil:51 - connected to db
+2021-03-13 00:09:28 INFO  EmployeeDAOImpl:112 - 2
+2021-03-13 00:09:28 INFO  ConnectionUtil:41 - connection successful
+2021-03-13 00:09:28 INFO  ConnectionUtil:51 - connected to db
+2021-03-13 00:09:37 INFO  ConnectionUtil:41 - connection successful
+2021-03-13 00:09:37 INFO  ConnectionUtil:51 - connected to db
+2021-03-13 00:09:37 INFO  EmployeeDAOImpl:112 - 1
+2021-03-13 00:09:38 INFO  ConnectionUtil:41 - connection successful
+2021-03-13 00:09:38 INFO  ConnectionUtil:51 - connected to db
+2021-03-13 00:09:38 INFO  EmployeeDAOImpl:112 - 2
+2021-03-13 00:09:38 INFO  ConnectionUtil:41 - connection successful
+2021-03-13 00:09:38 INFO  ConnectionUtil:51 - connected to db

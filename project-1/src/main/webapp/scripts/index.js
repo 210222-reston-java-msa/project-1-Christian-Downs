@@ -1,6 +1,10 @@
+window.onload = () => {
+	sessionStorage.clear();
+}
+
 function sendLogin(){
     console.log("send login triggered");
-
+	sessionStorage.clear();
 
     //grabbing the username and password from the html doc
     let uName = document.getElementById('uName').value;
@@ -24,7 +28,8 @@ function sendLogin(){
             console.log("success");
             sessionStorage.setItem('currentUser', this.responseText)
             sessionStorage.setItem('username',uName);
-            window.location.assign( "http://localhost:8090/project-1/home");
+            window.location.href = ( "home");
+
 
             console.log(sessionStorage.getItem('currentUser'));
 
@@ -32,6 +37,11 @@ function sendLogin(){
 
         if(this.readyState === 4 && this.status === 204){
             console.log("failed to find user");
+            var warningText = document.getElementById('warningText');
+            warningText.innerHTML = "incorrect user info";
+            warningText.setAttribute('style', " padding-bottom: 7px; color:red;");
+            
+
         }
     }
 

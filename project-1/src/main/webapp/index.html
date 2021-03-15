@@ -6,7 +6,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
 </head>
 <body>
-	<div class = "jumbotron"><div class="div container"><p class = "lead">Hello and welcome please login</p></div></div>
+<nav class="navbar  navbar-expand-lg navbar-dark bg-dark ">
+        <a class="navbar-brand" href="#">Reimbursements</a>
+        
+    </nav>
+	<div class = "jumbotron"><div class="div container text-center"><p class = "display-4">Hello! <br/> Welcome please login</p></div></div>
 	<div class="container-fluid">
 		<form name = "loginForm" onsubmit="sendLogin(event.preventDefault())">
 			<div class = "form-group">
@@ -18,9 +22,9 @@
 				<label for="pWord">PASSWORD</label>
 				<input type = "password" class="form-control" name = "password" id = "pWord" placeholder = "Enter Password">
 			</div>
+			<div id="warningText"></div>
 
 			<button type = "submit" class="btn btn-primary">LOGIN</button>
-
 		</form>
 	</div>
 

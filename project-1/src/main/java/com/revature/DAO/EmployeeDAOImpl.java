@@ -24,7 +24,28 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
 	@Override
 	public boolean update(Employee e) {
-		// TODO Auto-generated method stub
+		PreparedStatement stmt = null;
+		try(Connection conn = ConnectionUtil.getConnection()){
+			String sql = "UPDATE employeereimbusement.users\r\n"
+					+ "	SET user_email=?,user_first_name=?,username=?,user_last_name=?\r\n"
+					+ "	WHERE users_id="+e.getId()+";";
+			stmt = conn.prepareStatement(sql);
+			stmt.setString(1, e.getEmail());
+			stmt.setString(2,e.getFirstName());
+			stmt.setString(3, e.getUsername());
+			stmt.setString(4, e.getLastName());
+			int result = stmt.executeUpdate();
+			if(result == 0) {
+				log.info("didn't update anything");
+				return false;
+			} else {
+				log.info("Updated a profile");
+				return true;
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		return false;
 	}
 

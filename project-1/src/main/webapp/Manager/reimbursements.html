@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Reimbursements</title>
+    <link href="https://unpkg.com/tabulator-tables@4.9.3/dist/css/tabulator_midnight.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+      <nav class="navbar  navbar-expand-lg navbar-dark bg-dark ">
+        <a class="navbar-brand" href="#">Reimbursements</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://localhost:8090/project-1/home">Home<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://localhost:8090/project-1/Reimbursements">View all Reimbursements</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link active" href="http://localhost:8090/project-1/FindAnEmployee">Find an Employee</a>
+                </li>
+            </ul>
+          <button type="button" class="btn btn-info" onclick = "logout()">Logout</button>
+        </div>
+    </nav>
+	<div class="jumbotron text-center">
+		<h1 id = "header">Welcome</h1>
+	</div>
+	<div class="container-full px-lg-4">
+        <div id = "example-table" ></div>
+        
+  
+        <br>
+        
+        <div class="row justify-content-center">
+            <div class="btn-group btn-group-toggle container-xl " data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input name="options" type = "radio" checked onclick="AllReimbursements()">All Reimbursments
+                </label>
+                <label class="btn btn-secondary">
+                    <input name="options" type = "radio" onclick="AllPendingReimbursements()">All Pending Reimbursments
+                </label>
+                <label class="btn btn-secondary">
+                    <input type = "radio"  name = "options" onclick="AllUnapprovedReimbursements()">All Unapproved Reimbursments
+                </label>
+                <label class="btn btn-secondary">
+                    <input type = "radio"  name="options" onclick="AllApprovedReimbursements()">All Approved Reimbursments
+                </label>
+            </div>
+        </div>
+	</div>
+    <div class="container">
+        <h1 class="text-center">Reimbursement Info</h1>
+        <div id = "infoSpot"></div>
+    </div>
+	<script type="text/javascript" src="https://unpkg.com/tabulator-tables@4.9.3/dist/js/tabulator.min.js"></script>
+	<script type="text/javascript" src="./Manager/scripts/reimbursements.js"></script>
+	
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+</body>
+</html>
+

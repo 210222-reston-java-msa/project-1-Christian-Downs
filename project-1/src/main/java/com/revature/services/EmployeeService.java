@@ -10,7 +10,7 @@ public class EmployeeService{
 	public static EmployeeDAO eDao = new EmployeeDAOImpl();
 	
 	
-	public static Employee confirmLogin(String username, String password) {
+	public static  Employee confirmLogin(String username, String password) {
 		Employee e = eDao.findEmployeeByUsername(username);
 		
 		if(e == null) {
@@ -25,31 +25,30 @@ public class EmployeeService{
 	}
 
 
-	public static boolean insert(Employee e) {
+	public boolean insert(Employee e) {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	public static boolean update(Employee e) {
+	public boolean update(Employee e) {
 		// TODO Auto-generated method stub
-		return false;
+		return eDao.update(e);
 	}
 
 
-	public static Employee findEmployeeByUsername(String username) {
+	public Employee findEmployeeByUsername(String username) {
 		return eDao.findEmployeeByUsername(username);
 	}
 
 
-	public static Employee findEmployeeById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Employee findEmployeeById(int id) {
+		
+		return eDao.findEmployeeById(id);
 	}
 
 
-	public static List<Employee> getAllEmployees() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Employee> getAllEmployees() {
+		return eDao.getAllEmployees();
 	}
 
 }

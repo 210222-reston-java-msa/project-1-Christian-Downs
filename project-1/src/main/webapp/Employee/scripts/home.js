@@ -2,11 +2,15 @@ let h = document.getElementById("header");
 
 let ses = sessionStorage;
 let user = JSON.parse(ses.getItem('currentUser'));
+if(user.role=='Manager')
+	{
+		window.location.reload();
+	}
 var td;
 var uName = user["username"];
 
 window.onload = (() => {
-    console.log(ses.getItem('currentUser'));
+    console.log(user);
 
         var elements = document.getElementsByClassName("insertNameHere");
         Array.from(elements).forEach((e) => {
@@ -15,7 +19,7 @@ window.onload = (() => {
 });
 
 function logout() {
-	sessionStorage.clear();
+	//sessionStorage.clear();
     console.log("logging out")
-    window.location = "http://localhost:8090/project-1/logout";
+    window.location = "http://localhost:8090/project-1/";
 }

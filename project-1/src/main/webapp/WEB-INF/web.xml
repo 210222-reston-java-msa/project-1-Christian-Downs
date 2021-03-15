@@ -12,6 +12,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>FrontController</servlet-name>
+    <url-pattern></url-pattern>
     <url-pattern>/login</url-pattern>
     <url-pattern>/logout</url-pattern>
     <url-pattern>/home</url-pattern>
@@ -26,5 +27,12 @@
     <url-pattern>/PastReimbursementPage</url-pattern>
     <url-pattern>/DeleteReimbursement</url-pattern>
     <url-pattern>/SubmitReimbursement</url-pattern>
+    <url-pattern>/Reimbursements</url-pattern>
+    <url-pattern>/FindAnEmployee</url-pattern>
+    <url-pattern>/Profile</url-pattern>
+    <url-pattern>/GetEmployeeById/*</url-pattern>
+    <url-pattern>/GetAllEmployees</url-pattern>
+    <url-pattern>/GetAllTheReimbursementsOfEmployeeWithId/*</url-pattern>
+    <url-pattern>/UpdateProfile</url-pattern>
   </servlet-mapping>
 </web-app>

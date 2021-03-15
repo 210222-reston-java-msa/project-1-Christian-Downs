@@ -3,6 +3,7 @@ package com.revature.util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -11,7 +12,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.DAO.EmployeeDAO;
+import com.revature.DAO.EmployeeDAOImpl;
 import com.revature.model.Employee;
 import com.revature.model.LoginTemplate;
 import com.revature.model.Reimbursement;
@@ -64,6 +68,21 @@ public class RequestHelper {
 			response.setContentType("application/json");
 			
 			pw.println(mapper.writeValueAsString(e));
+			String role = session.getAttribute("role").toString();
+			// Could use an if else if tree but decided to use switch for later additSions
+			//sends the user to the currect home page
+//			switch (role) {
+//				case "Manager":
+//					log.info( " is a manager");
+//					// sends the page to the manager home
+//					request.getRequestDispatcher("/Manager/home.html").forward(request, response);
+//					break;
+//				case "Employee":
+//					log.info("Person is just an employee");
+//					// seds the page to the employee home
+//					request.getRequestDispatcher("/Employee/home.html").forward(request, response);
+//					break;
+//			}
 		} else {
 			log.info("couldn't find the user");
 			response.setStatus(204);
@@ -72,12 +91,6 @@ public class RequestHelper {
 	}
 
 	public static void processLogout(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-//		HttpSession session = request.getSession();
-//		session.removeAttribute("username");
-//		session.removeAttribute("role");
-//		session.removeAttribute("firstName");
-//		session.removeAttribute("currentUserId");
-//		log.info("cleared all attributes");
 //		response.sendRedirect("");
 	}
 
@@ -115,6 +128,46 @@ public class RequestHelper {
 		
 		
 		
+	}
+
+	public static void updateProfile(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		BufferedReader reader = request.getReader();
+		StringBuilder s = new StringBuilder();
+		
+		String line = reader.readLine();
+		while(line!= null) {
+			//addes the current line to the stringBuilder
+			s.append(line);
+			
+			log.info(s);
+			//pushes the reader to the next line
+			line = reader.readLine();
+		}
+		
+		String body = s.toString();
+		
+		log.info(body);
+		
+		Map<String,String> map = mapper.readValue(body, new TypeReference<Map<String,String>>(){});
+		
+		Employee employeeUpdated = mapper.readValue(body, Employee.class);
+		log.info(employeeUpdated);
+		
+		EmployeeDAO eDAO = new EmployeeDAOImpl();
+		if(eDAO.update(employeeUpdated)) {
+			HttpSession session = request.getSession();
+			session.setAttribute("username", employeeUpdated.getUsername());
+			session.setAttribute("role", employeeUpdated.getRole());
+			session.setAttribute("firstName", employeeUpdated.getFirstName());
+			session.setAttribute("currentUserId", employeeUpdated.getId());
+			PrintWriter pw = response.getWriter();
+			
+			response.setContentType("application/json");
+			
+			pw.println(mapper.writeValueAsString(employeeUpdated));
+		} else {
+			response.setStatus(204);
+		}
 	}
 
 }

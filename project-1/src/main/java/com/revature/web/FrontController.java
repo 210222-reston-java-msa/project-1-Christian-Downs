@@ -3,6 +3,7 @@ package com.revature.web;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -14,9 +15,9 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.DAO.ReimbursementDAO;
-import com.revature.DAO.ReimbursementDAOImpl;
+import com.revature.model.Employee;
 import com.revature.model.Reimbursement;
+import com.revature.services.EmployeeService;
 import com.revature.services.ReimbursementService;
 import com.revature.util.RequestHelper;
 
@@ -42,9 +43,15 @@ public class FrontController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		ReimbursementService rService = new ReimbursementService();
+		EmployeeService eService = new EmployeeService();
 		String URI = request.getRequestURI().replace("/project-1/", "");
 		log.info("Entered the doGet of front controller for " + URI);
+		
+		
+		
+		
 		String statusType = "";
+		//Sets status type to a variable to be used later
 		if(URI.contains("GetAllReimbursementsOfAGivenType")){
 			statusType = URI.replace("GetAllReimbursementsOfAGivenType/", "");
 			log.info(statusType);
@@ -58,7 +65,28 @@ public class FrontController extends HttpServlet {
 		
 		
 		
-		HttpSession ses = request.getSession();
+		HttpSession ses = request.getSession(true);
+		
+		//Employee Searcher
+		if(URI.contains("GetEmployeeById")) {
+			int employeeId = Integer.parseInt(URI.replace("GetEmployeeById/", ""));
+			log.info(employeeId);
+			String firstName = eService.findEmployeeById(employeeId).getFirstName();
+			log.info(firstName);
+			json = om.writeValueAsString(firstName);
+			pw.print(json);
+		}
+		//Reimbursements an employee makes
+		else if(URI.contains("GetAllTheReimbursementsOfEmployeeWithId")) {
+			int employeeId = Integer.parseInt(URI.replace("GetAllTheReimbursementsOfEmployeeWithId/", ""));
+			log.info(employeeId);
+			List<Reimbursement> output = rService.getAllReimbursementsOfAGivenEmployee(employeeId);
+			log.info(output);
+			json = om.writeValueAsString(output);
+			pw.print(json);
+		}
+		
+		
 		switch (URI) {
 		case "home":
 			log.info("Going to the home page of the user");
@@ -67,7 +95,7 @@ public class FrontController extends HttpServlet {
 			//sends the user to the currect home page
 			switch (role) {
 				case "Manager":
-					log.info(ses.getAttribute("username") + " is a manager");
+					log.info( " is a manager");
 					// sends the page to the manager home
 					request.getRequestDispatcher("/Manager/home.html").forward(request, response);
 					break;
@@ -107,7 +135,28 @@ public class FrontController extends HttpServlet {
 			json = om.writeValueAsString(reimbursements);
 			pw.print(json);
 			break;
-
+		case "":
+			request.getSession(true);
+			request.getRequestDispatcher("/index.html").forward(request, response);
+			break;
+			
+			
+		case "GetAllEmployees":
+			List<Employee> employees = eService.getAllEmployees();
+			json = om.writeValueAsString(employees);
+			pw.print(json);
+			break;
+		
+			
+		case "Profile":
+			request.getRequestDispatcher("/Employee/profile.html").forward(request, response);
+			break;
+		case "FindAnEmployee":
+			request.getRequestDispatcher("/Manager/findAnEmployee.html").forward(request, response);
+			break;
+		case "Reimbursements":
+			request.getRequestDispatcher("/Manager/reimbursements.html").forward(request, response);
+			break;
 		}
 	}
 
@@ -120,7 +169,7 @@ public class FrontController extends HttpServlet {
 		
 		ReimbursementService rService = new ReimbursementService();
 		final String URI = request.getRequestURI().replace("/project-1/", "");
-		log.info("Entered the doGet of front controller");
+		log.info("Entered the doPost of front controller");
 
 		if (URI.contains("ReimbursementApproved")) {
 			log.info(URI);
@@ -140,6 +189,8 @@ public class FrontController extends HttpServlet {
 			case "login":
 				log.info("attempting to log in");
 				RequestHelper.processLogin(request, response);
+				
+				log.info("all done");
 				break;
 			case "DeleteReimbursement":
 				BufferedReader reader = request.getReader();
@@ -154,9 +205,16 @@ public class FrontController extends HttpServlet {
 				RequestHelper rh = new RequestHelper();
 				rh.submitReimbursement(request, response);
 				break;
-//			case "logout":
-//				RequestHelper.processLogout(request, response);
-//				break;
+			case "logout":
+				RequestHelper.processLogout(request, response);
+				break;
+			case "home":
+				doGet(request, response);
+				break;
+				
+			case "UpdateProfile":
+				RequestHelper.updateProfile(request,response);
+				break;
 			}
 		}
 	}

@@ -9,7 +9,7 @@
 </head>
 <body>
      <nav class="navbar  navbar-expand-lg navbar-dark bg-dark ">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">Reimbursements</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -25,6 +25,9 @@
                 <li class="nav-item active">
                     <a class="nav-link active" href="http://localhost:8090/project-1/PastReimbursementPage">View Past Reimbursements</a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link active" href="http://localhost:8090/project-1/Profile">Profile</a>
+                </li>
             </ul>
            	<button type="button" class="btn btn-info" onclick = "logout()">Logout</button>
         </div>
@@ -35,8 +38,24 @@
             <p class="lead">Below is a table of your previous reimbursements feel free to take a look if anything is wrong please remove it and make a new ticket.<br/> However you can only remove PENDING tickets.</p>
         </div>
     </div>
+        <div class="row justify-content-center">
+            <div class="btn-group btn-group-toggle container-xl " data-toggle="buttons">
+                <label class="btn btn-secondary active">
+                    <input name="options" type = "radio" checked onclick="setType('All')">All Reimbursments
+                </label>
+                <label class="btn btn-secondary">
+                    <input name="options" type = "radio" onclick="setType('PENDING')">All Pending Reimbursments
+                </label>
+                <label class="btn btn-secondary">
+                    <input type = "radio"  name = "options" onclick="setType('UNAPPROVED')">All Unapproved Reimbursments
+                </label>
+                <label class="btn btn-secondary">
+                    <input type = "radio"  name="options" onclick="setType('APPROVED')">All Approved Reimbursments
+                </label>
+            </div>
+        </div>
     <div class="container">
-    <table class="table table-striped table-bordered" id = "reimbursementTable">
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th scope="col">Date</th>
@@ -55,63 +74,71 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
     <script type="text/javascript">
+    var table = document.getElementById("reimbursementTable");
+    var id = sessionStorage.getItem('currentUser')[id];
+    var typeToShow = "All"
         window.onload = function() {
-            var id = sessionStorage.getItem('currentUser')[id];
             console.log(id);
-            var table = document.getElementById("reimbursementTable");
-            fetch(`http://localhost:8090/project-1/PastReimbursement`)
-
-            .then((response) => response.json())
-            .then( (data) => {
-
-                console.log(data);
-                data.forEach(e => {
-                    console.log(e);
-                    console.log(Object.entries(e).submitted);
-                    console.log(Object.entries(e)['submitted']);
-                    console.log(e['submitted'])
-                   let tr = document.createElement("tr");
-                   table.appendChild(tr);
-
-                   let td = document.createElement("td");
-                        // date submitted
-                        tr.appendChild(td);
-                        td.setAttribute("scope","row");
-                        var submitted = new Date(e['submitted']).toString().replace("GMT-0600 (Central Standard Time)", "");
-                        td.innerHTML = submitted;
-
-                        //amount
-                        td = document.createElement("td");
-                        tr.appendChild(td);
-                        td.innerHTML = `$${e['amount']}`;
-
-                        // Description
-                        td = document.createElement("td");
-                        tr.appendChild(td);
-                        td.innerHTML = e['description'];
-
-                        //image
-                        td = document.createElement("td");
-                        tr.appendChild(td);
-                        td.innerHTML = e['receipt'];
-
-                        //type
-                        td = document.createElement("td");
-                        tr.appendChild(td);
-                        td.innerHTML = e['type'];
-
-                        td = document.createElement("td");
-                        tr.appendChild(td);
-                        td.innerHTML = e['status'];
-
-                        td = document.createElement("td");
-                        tr.appendChild(td);
-                        td.innerHTML = `<button type="button" class="btn btn-warning btn-sm" onclick = "deleteReimbursement(${e['id']})">Delete</button>`;
-                    
-                })
-            })
+            populateTable();
         }
+        
+        function setType(type){
+        	typeToShow = type;
+        	populateTable();
+        }
+        
+		function populateTable(){
+			table.innerHTML = "";
+	           fetch(`http://localhost:8090/project-1/PastReimbursement`)
 
+	            .then((response) => response.json())
+	            .then( (data) => {
+					
+	                console.log(data);
+	                data.forEach(e => {
+	                	
+	                	if(e['status'] == typeToShow || typeToShow == 'All'){
+	                   let tr = document.createElement("tr");
+	                   table.appendChild(tr);
+
+	                   let td = document.createElement("td");
+	                        // date submitted
+	                        tr.appendChild(td);
+	                        td.setAttribute("scope","row");
+	                        var submitted = new Date(e['submitted']).toString().replace("GMT-0600 (Central Standard Time)", "");
+	                        td.innerHTML = submitted;
+
+	                        //amount
+	                        td = document.createElement("td");
+	                        tr.appendChild(td);
+	                        td.innerHTML = `$${e['amount']}`;
+
+	                        // Description
+	                        td = document.createElement("td");
+	                        tr.appendChild(td);
+	                        td.innerHTML = e['description'];
+
+	                        //image
+	                        td = document.createElement("td");
+	                        tr.appendChild(td);
+	                        td.innerHTML = e['receipt'];
+
+	                        //type
+	                        td = document.createElement("td");
+	                        tr.appendChild(td);
+	                        td.innerHTML = e['type'];
+
+	                        td = document.createElement("td");
+	                        tr.appendChild(td);
+	                        td.innerHTML = e['status'];
+
+	                        td = document.createElement("td");
+	                        tr.appendChild(td);
+	                        td.innerHTML = `<button type="button" class="btn btn-warning btn-sm" onclick = "deleteReimbursement(${e['id']})">Delete</button>`;
+	                    
+	                }})
+	            })			
+		}
 
         function deleteReimbursement(id){
             let xhr = new XMLHttpRequest();
@@ -129,8 +156,8 @@
         }
 
         function logout() {
-	    sessionStorage.clear();
-        window.location = "http://localhost:8090/project-1/logout";
+	    //sessionStorage.clear();
+        window.location = "http://localhost:8090/project-1/";
         }
     
     </script>

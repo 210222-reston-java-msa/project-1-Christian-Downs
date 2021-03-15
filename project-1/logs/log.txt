@@ -94,3 +94,13 @@ asdf2021-03-06 00:24:13 INFO  ConnectionUtil:38 - Connection successful
 2021-03-14 22:27:45 INFO  ConnectionUtil:41 - connection successful
 2021-03-14 22:27:45 INFO  ConnectionUtil:51 - connected to db
 2021-03-14 22:27:45 INFO  EmployeeDAOImpl:108 - Employee [id=1, username=Test, firstName=test, lastName=person, email=test.person@example.com, role=Manager]
+2021-03-15 09:23:09 INFO  ConnectionUtil:41 - connection successful
+2021-03-15 09:23:09 INFO  ConnectionUtil:51 - connected to db
+2021-03-15 09:23:10 INFO  ConnectionUtil:41 - connection successful
+2021-03-15 09:23:10 INFO  ConnectionUtil:51 - connected to db
+2021-03-15 09:23:10 INFO  EmployeeDAOImpl:108 - Employee [id=1, username=Test, firstName=test, lastName=person, email=test.person@example.com, role=Manager]
+2021-03-15 09:24:05 INFO  ConnectionUtil:41 - connection successful
+2021-03-15 09:24:05 INFO  ConnectionUtil:51 - connected to db
+2021-03-15 09:24:05 INFO  ConnectionUtil:41 - connection successful
+2021-03-15 09:24:05 INFO  ConnectionUtil:51 - connected to db
+2021-03-15 09:24:05 INFO  EmployeeDAOImpl:108 - Employee [id=1, username=Test, firstName=test, lastName=person, email=test.person@example.com, role=Manager]
